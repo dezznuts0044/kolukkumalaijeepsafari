@@ -1,10 +1,10 @@
 // Import Stack navigation instead of Tabs
-import { Stack } from 'expo-router';
+import { Stack } from "expo-router";
 
 // Import theme colors for consistent styling
-import { Colors } from '@/constants/theme';
+import { Colors } from "@/constants/theme";
 // Import hook to detect color scheme (light/dark mode)
-import { useColorScheme } from '@/hooks/use-color-scheme';
+import { useColorScheme } from "@/hooks/use-color-scheme";
 
 /**
  * Layout component for the app
@@ -15,18 +15,19 @@ export default function AppLayout() {
   const colorScheme = useColorScheme();
 
   return (
-    <Stack 
+    <Stack
       screenOptions={{
         // Set header tint color based on current theme
-        headerTintColor: Colors[colorScheme ?? 'light'].tint,
+        headerTintColor: Colors[colorScheme ?? "light"].tint,
         // Hide header by default
         headerShown: false,
-      }}>
+      }}
+    >
       {/* Only index route is kept - tabs removed */}
       <Stack.Screen
         name="index"
         options={{
-          title: 'Home',
+          title: "Home",
         }}
       />
     </Stack>

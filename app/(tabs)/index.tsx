@@ -1,38 +1,55 @@
-import { StyleSheet } from 'react-native';
-import { WebView } from 'react-native-webview';
+import { useRef, useState } from "react";
+import { Pressable, StyleSheet, Text, View } from "react-native";
+import { WebView } from "react-native-webview";
 
-import { ThemedView } from '@/components/themed-view';
+import { ThemedView } from "@/components/themed-view";
 
-export default function HomeScreen() {
+export default function Home() {
+  const webRef = useRef(null);
+  const [canGoBack, setCanGoBack] = useState(false);
+
   return (
     <ThemedView style={styles.container}>
-      <ThemedView style={styles.titleContainer}>
-        {/* <ThemedText type="title">Welcome!</ThemedText>
-        <ThemedText>Your Expo Boilerplate is ready.</ThemedText> */}
-      </ThemedView>
-      <ThemedView style={styles.content}>
-        {/* <ThemedText type="subtitle">Get Started</ThemedText> */}
-        <WebView source={{ uri: 'https://jeepsafarikolukkumalai.com/admin/jeep-owner-login' }}  style={styles.webview} enableApplePay={true} showsVerticalScrollIndicator={false} paymentRequestEnabled={true}/>
-      </ThemedView>
+      {/* Back Button Row */}
+      {canGoBack && (
+        <View style={styles.backRow}>
+          <Pressable onPress={() => webRef.current?.goBack()}>
+            <Text style={styles.backText}>{"< Back"}</Text>
+          </Pressable>
+        </View>
+      )}
+
+      {/* WebView */}
+      <View style={styles.webviewContainer}>
+        <WebView
+          ref={webRef}
+          source={{
+            uri: "https://jeepsafarikolukkumalai.com/admin/jeep-owner-login",
+          }}
+          onNavigationStateChange={(state) => setCanGoBack(state.canGoBack)}
+          showsVerticalScrollIndicator={false}
+          style={styles.webview}
+        />
+      </View>
     </ThemedView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
+  container: { flex: 1 },
+  backRow: {
+    padding: 12,
+    backgroundColor: "transparent",
+    position: "absolute",
+    top: 16,
+    left: 16,
+    zIndex: 1,
   },
-  titleContainer: {
-    gap: 8,
-    marginBottom: 24,
-    justifyContent: 'center',
-    alignItems: 'center',
+  backText: {
+    fontSize: 16,
+    fontWeight: "500",
+    color: "white",
   },
-  content: {
-    gap: 8,
-    flex: 1,
-  },
-  webview: {
-    flex: 1,
-  },
+  webviewContainer: { flex: 1 },
+  webview: { flex: 1 },
 });
