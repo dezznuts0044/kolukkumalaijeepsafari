@@ -7,13 +7,11 @@
     "scheme": "kolukkumalai",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
-
     "ios": {
       "supportsTablet": true,
       "icon": "./assets/icons/icon.png",
       "bundleIdentifier": "com.ajayjoseph0044.kolukkumalai"
     },
-
     "android": {
       "adaptiveIcon": {
         "backgroundColor": "#ffffff",
@@ -24,12 +22,10 @@
       "predictiveBackGestureEnabled": false,
       "package": "com.ajayjoseph0044.kolukkumalai"
     },
-
     "web": {
       "output": "static",
       "favicon": "./assets/icons/favicon.png"
     },
-
     "plugins": [
       "expo-router",
       [
@@ -46,16 +42,14 @@
       ],
       "expo-web-browser"
     ],
-
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
     },
-
     "extra": {
       "router": {},
       "eas": {
-        "projectId": "9f8409d8-77b3-4b4b-a730-72513ac89820"
+        "projectId": "c7536028-5ba7-46b9-b9e2-eb1077ddcd80"
       }
     }
   }
